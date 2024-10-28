@@ -34,9 +34,3 @@ jobs:
           make test
         env:
           RANDOM_SEED: 0
-      - name: Deploy no EC2 - AWS
-        run: |
-          echo "Conectando no EC2"
-          echo "${{secrets.AWS_PEM}}" > private_key && chmod 600 private_key 
-          ssh -o StrictHostKeyChecking=no -i private_key ubuntu@ec2-3-230-98-240.compute-1.amazonaws.com "
-              cd ./POC/;git pull;./iniciar.sh"
